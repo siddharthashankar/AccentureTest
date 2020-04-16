@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="org.joda.time.format.DateTimeFormat"/>
+        <import type="accenturetest.com.weatherforecast.domain.Units"/>
+        <variable
+            name="units"
+            type="accenturetest.com.weatherforecast.domain.Units" />
+        <variable
+            name="forecast"
+            type="accenturetest.com.weatherforecast.model.Forecast" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/forecastItem"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="15dp"
+        card_view:cardCornerRadius="4dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/forecast_item_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="@{DateTimeFormat.forPattern(`EEEE, MMMM dd`).print(forecast.date)}"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Lunes" />
+                <ImageView
+                    android:id="@+id/forecast_item_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="21dp"
+                    android:src="@drawable/ic_sun"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@id/forecast_item_date"/>
+                <TextView
+                    android:id="@+id/forecast_item_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:textSize="40sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@{String.valueOf((int) forecast.temperature)}"
+                    card_view:layout_constraintStart_toEndOf="@id/forecast_item_icon"
+                    card_view:layout_constraintTop_toTopOf="@id/forecast_item_icon"
+                    card_view:layout_constraintBottom_toBottomOf="@id/forecast_item_icon"
+                    tools:text="23" />
+                <TextView
+                    android:id="@+id/forecast_item_temp_units"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:text="@{units == Units.SI ? `ºC` : `ºF`}"
+                    card_view:layout_constraintTop_toTopOf="@id/forecast_item_temp"
+                    card_view:layout_constraintStart_toEndOf="@id/forecast_item_temp"
+                    tools:text="°C" />
+                <TextView
+                    android:id="@+id/forecast_item_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:text="@{forecast.status}"
+                    card_view:layout_constraintTop_toBottomOf="@id/forecast_item_icon"
+                    card_view:layout_constraintStart_toStartOf="@id/forecast_item_icon"
+                    tools:text="Nublado" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/forecast_item_max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="@{@string/forecast_item_max((int)forecast.maxTemperature, units == Units.SI ? `C` : `F`)}"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Temperatura máxima\n20°C" />
+                <TextView
+                    android:id="@+id/forecast_item_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"
+                    android:text="@{@string/forecast_item_min((int)forecast.minTemperature, units == Units.SI ? `C` : `F`)}"
+                    card_view:layout_constraintTop_toBottomOf="@id/forecast_item_max"
+                    card_view:layout_constraintStart_toStartOf="@id/forecast_item_max"
+                    card_view:layout_constraintEnd_toEndOf="@id/forecast_item_max"
+                    tools:text="Temperatura mínima\n12°C" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

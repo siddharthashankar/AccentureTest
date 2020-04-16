@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Simple Weather</string>
+
+    <!-- Misc strings. -->
+    <string name="generic_error">There has been an error.</string>
+    <string name="moments_ago">A moments</string>
+    <string name="last_update_template">Last Update: %s ago</string>
+    <string name="day">day</string>
+    <string name="days">days</string>
+    <string name="hour">hour</string>
+    <string name="hours">hours</string>
+    <string name="minute">minute</string>
+    <string name="minutes">minutes</string>
+    <string name="speed_metric">m/s</string>
+    <string name="speed_imperial">miles/hour</string>
+
+    <string name="accept_button_string">Accept</string>
+    <string name="cancel_button_string">Cancel</string>
+    <string name="error_title_string">Ups!</string>
+
+    <!-- Error strings -->
+    <string name="location_permission_error">We need your location in order to provide your weather</string>
+
+    <!-- MainActivity strings -->
+    <string name="main_weather_title">Weather at %s</string>
+    <string name="main_temp_template">%d º%s</string>
+    <string name="main_location_permission_title">Location permission</string>
+    <string name="main_location_permission">Location permission is needed in order to give you the weather.</string>
+    <string name="main_humidity_template">Humidity %d%%</string>
+    <string name="main_wind_template">Wind Speed \n %.2f %s</string>
+    <!-- MainActivity errors -->
+    <string name="main_weather_error">Failed to load current weather.</string>
+
+    <!-- MainActivity RecyclerView Item strings -->
+    <string name="forecast_item_max">Max temperature\n %d º%s</string>
+    <string name="forecast_item_min">Min temperature\n %d º%s</string>
+
+</resources>
